@@ -68,7 +68,7 @@
   /* ---------- NAV ---------- */
   header{
     position:sticky;top:0;left:0;right:0;z-index:100;
-    background:rgba(247,242,234,0.95);
+    background:rgba(253,237,214);
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
   }
@@ -373,65 +373,79 @@
     el.addEventListener('mouseleave', () => cursorRing.classList.remove('hovering'));
   });
   const wasteData = [
-    {no:1, title:"Petrochemical processes and pyrolytic operations", items:["Furnace/Reactor residue and debris","Tarry Residues and Still Bottoms from Distillation","Oily Sludge Emulsion","Organic Residues","Residues from Alkali Wash of Fuels","Spent Catalyst and Molecular Sieves","Slop Oil from Wastewater Treatment"]},
-    {no:2, title:"Crude oil and natural gas production", items:["Drill cutting excluding those from water based mud","Sludge Containing Oil","Drilling Mud Containing Oil"]},
-    {no:3, title:"Cleaning, emptying and maintenance of petroleum oil storage tanks including ships", items:["Cargo Residue, Washing Water and Sludge Containing Oil","Cargo Residue and Sludge Containing Chemicals","Sludge and Filters Contaminated with Oil","Ballast Water Containing Oil from Ships"]},
-    {no:4, title:"Petroleum refining or re-processing of used oil or recycling of waste oil", items:["Oil Sludge or Emulsion","Spent Catalyst","Slop Oil","Organic Residue from Processes","Spent Clay Containing Oil"]},
-    {no:5, title:"Industrial operations using mineral or synthetic oil as lubricant", items:["Used or Spent Oil","Wastes or Residues Containing Oil","Waste Cutting Oils"]},
-    {no:6, title:"Secondary production and/or industrial use of zinc", items:["Sludge and Filter Press Cake from Zinc Sulphate & Zinc Compounds","Zinc fines/dust/ash/skimmings (dispersible form)","Other Residues from Processing of Zinc Ash or Skimmings","Flue Gas Dust and Other Particulates"]},
-    {no:7, title:"Primary production of zinc, lead, copper and other non-ferrous metals (except aluminium)", items:["Flue gas dust from roasting","Process Residues","Arsenic-Bearing Sludge","Non-Ferrous Metal Bearing Sludge and Residue","Sludge from Scrubbers"]},
-    {no:8, title:"Secondary production of copper", items:["Spent electrolytic solutions","Sludge and Filter Cakes","Flue Gas Dust and Other Particulates"]},
-    {no:9, title:"Secondary production of lead", items:["Acid from Used Batteries"]},
-    {no:10, title:"Production and/or industrial use of cadmium and arsenic and their compounds", items:["Residues containing cadmium and arsenic"]},
-    {no:11, title:"Production of primary and secondary aluminium", items:["Sludges from gas treatment","Cathode residues including pot lining wastes","Tar Containing Wastes","Flue gas dust and other Particulates","Drosses and waste from treatment of salt sludge","Used anode butts","Vanadium sludge from alumina Refineries"]},
-    {no:12, title:"Metal surface treatment (etching, staining, polishing, galvanizing, cleaning, degreasing, plating, etc.)", items:["Acidic and Alkaline Residues","Spent acid and alkali","Spent bath/sludge containing sulphide, cyanide and toxic metals","Sludge from Bath Containing Organic Solvents","Phosphate Sludge","Sludge from Staining Bath","Copper etching residues","Plating metal sludge"]},
-    {no:13, title:"Production of iron and steel including other ferrous alloys", items:["Spent pickling liquor","Sludge from acid recovery Unit","Benzol Acid Sludge","Decanter Tank Tar Sludge","Tar Storage Tank Residue","Residues from Coke Oven By-Product Plant"]},
-    {no:14, title:"Hardening of steel", items:["Cyanide-, nitrate-, or nitrite-containing sludge","Spent hardening salt"]},
-    {no:16, title:"Production of caustic soda and chlorine", items:["Mercury bearing sludge from mercury cell process","Residue/Sludges and filter Cakes","Brine sludge containing mercury"]},
-    {no:17, title:"Production of mineral acids", items:["Residues, dusts or filter cakes","Spent catalyst"]},
-    {no:18, title:"Production of nitrogenous and complex fertilizers", items:["Spent Catalyst","Carbon Residue/Spent Carbon","Sludge/residue containing Arsenic","Chromium sludge from water cooling tower"]},
-    {no:19, title:"Production of phenol", items:["Residue Or Sludge Containing Phenol","Spent catalyst"]},
-    {no:20, title:"Production and/or industrial use of solvents", items:["Contaminated Aromatic, Aliphatic or Naphthenic Solvents May or May Not Be Fit For Reuse","Spent Solvents","Distillation Residues","Process Sludge"]},
-    {no:21, title:"Production and/or industrial use of paints, pigments, lacquers, varnishes and inks", items:["Process Wastes, Residues and Sludges","Spent Solvent"]},
-    {no:22, title:"Production of plastics", items:["Spent catalysts","Process Residues"]},
-    {no:23, title:"Production and/or industrial use of glues, organic cements, adhesives and resins", items:["Wastes or Residues (Not Made With Vegetable or Animal Materials)","Spent Solvents"]},
-    {no:24, title:"Production of canvas and textiles", items:["Chemical Residues"]},
-    {no:25, title:"Industrial production and formulation of wood preservatives", items:["Chemical Residues","Residues from Wood Alkali Bath"]},
-    {no:26, title:"Production or industrial use of synthetic dyes, dye intermediates and pigments", items:["Process waste, sludge/residues containing acid or toxic metals, or organic compounds","Dust from Air Filtration System","Spent acid","Spent Solvent","Spent catalyst"]},
-    {no:27, title:"Production of organic-silicone compound", items:["Process Residues"]},
-    {no:28, title:"Production/formulation of drugs, pharmaceutical and health care products", items:["Process Residue and Wastes","Spent Catalyst","Spent carbon","Off-Specification Products","Date-Expired Products","Spent Solvents"]},
-    {no:29, title:"Production and formulation of pesticides including stock-piles", items:["Process Wastes or Residues","Sludge Containing Residual Pesticides","Date-Expired and Off-Specification Pesticides","Spent Solvents","Spent catalysts","Spent acids"]},
-    {no:30, title:"Leather tanneries", items:["Chromium bearing residue and sludge"]},
-    {no:31, title:"Electronic Industry", items:["Process Residue And Wastes","Spent Etching Chemicals and Solvents"]},
-    {no:32, title:"Pulp and Paper Industry", items:["Spent Chemicals","Corrosive Wastes from Use of Strong Acid and Bases","Process Sludge Containing Absorbable Organic Halides (AOX)"]},
-    {no:33, title:"Handling of hazardous chemicals and wastes", items:["Empty Barrels/Containers/Liners Contaminated with Hazardous Chemicals/Wastes","Contaminated Cotton Rags or Other Cleaning Materials"]},
-    {no:34, title:"De-contamination of barrels/containers used for hazardous wastes/chemicals", items:["Chemical-Containing Residue Arising From Decontamination","Sludge from Treatment of Waste Water from Cleaning/Disposal of Barrels/Containers"]},
-    {no:35, title:"Purification/treatment of exhaust air, gases, water, wastewater & CETPs", items:["Exhaust Air or Gas cleaning residue","Spent ion exchange resin containing Toxic metals","Chemical Sludge from Waste Water Treatment","Oil and Grease Skimming","Chromium sludge from cooling water"]},
-    {no:36, title:"Purification process for organic compounds/solvents", items:["Any Process or Distillation Residue","Spent Carbon or Filter Medium"]},
-    {no:37, title:"Hazardous waste treatment processes (pre-processing, incineration, concentration)", items:["Sludge from Wet Scrubbers","Ash from incinerator and flue gas cleaning residues","Concentration or Evaporation Residues"]},
-    {no:38, title:"Chemical processing of Ores containing heavy metals (Chromium, Manganese, Nickel, Cadmium etc.)", items:["Process Residues","Spent Acid"]}
-  ];
+    {no:1, title:"Petrochemical processes and pyrolytic operations", items:[{num:1,text:"Furnace/Reactor residue and debris"},{num:2,text:"Tarry Residues and Still Bottoms from Distillation"},{num:3,text:"Oily Sludge Emulsion"},{num:4,text:"Organic Residues"},{num:5,text:"Residues from Alkali Wash of Fuels"},{num:6,text:"Spent Catalyst and Molecular Sieves"},{num:7,text:"Slop Oil from Wastewater Treatment"}]},
+    {no:2, title:"Crude oil and natural gas production", items:[{num:1,text:"Drill cutting excluding those from water based mud"},{num:2,text:"Sludge Containing Oil"},{num:3,text:"Drilling Mud Containing Oil"}]},
+    {no:3, title:"Cleaning, emptying and maintenance of petroleum oil storage tanks including ships", items:[{num:1,text:"Cargo Residue, Washing Water and Sludge Containing Oil"},{num:2,text:"Cargo Residue and Sludge Containing Chemicals"},{num:3,text:"Sludge and Filters Contaminated with Oil"},{num:4,text:"Ballast Water Containing Oil from Ships"}]},
+    {no:4, title:"Petroleum refining or re-processing of used oil or recycling of waste oil", items:[{num:1,text:"Oil Sludge or Emulsion"},{num:2,text:"Spent Catalyst"},{num:3,text:"Slop Oil"},{num:4,text:"Organic Residue from Processes"},{num:5,text:"Spent Clay Containing Oil"}]},
+    {no:5, title:"Industrial operations using mineral or synthetic oil as lubricant", items:[{num:1,text:"Used or Spent Oil"},{num:2,text:"Wastes or Residues Containing Oil"},{num:3,text:"Waste Cutting Oils"}]},
+    {no:6, title:"Secondary production and/or industrial use of zinc", items:[{num:1,text:"Sludge and Filter Press Cake from Zinc Sulphate & Zinc Compounds"},{num:2,text:"Zinc fines/dust/ash/skimmings (dispersible form)"},{num:3,text:"Other Residues from Processing of Zinc Ash or Skimmings"},{num:4,text:"Flue Gas Dust and Other Particulates"}]},
+    {no:7, title:"Primary production of zinc, lead, copper and other non-ferrous metals (except aluminium)", items:[{num:1,text:"Flue gas dust from roasting"},{num:2,text:"Process Residues"},{num:3,text:"Arsenic-Bearing Sludge"},{num:4,text:"Non-Ferrous Metal Bearing Sludge and Residue"},{num:5,text:"Sludge from Scrubbers"}]},
+    {no:8, title:"Secondary production of copper", items:[{num:1,text:"Spent electrolytic solutions"},{num:2,text:"Sludge and Filter Cakes"},{num:3,text:"Flue Gas Dust and Other Particulates"}]},
+    {no:9, title:"Secondary production of lead", items:[{num:3,text:"Acid from Used Batteries"}]},
+    {no:10, title:"Production and/or industrial use of cadmium and arsenic and their compounds", items:[{num:1,text:"Residues containing cadmium and arsenic"}]},
+    {no:11, title:"Production of primary and secondary aluminium", items:[{num:1,text:"Sludges from gas treatment"},{num:2,text:"Cathode residues including pot lining wastes"},{num:3,text:"Tar Containing Wastes"},{num:4,text:"Flue gas dust and other Particulates"},{num:5,text:"Drosses and waste from treatment of salt sludge"},{num:6,text:"Used anode butts"},{num:7,text:"Vanadium sludge from alumina Refineries"}]},
+    {no:12, title:"Metal surface treatment (etching, staining, polishing, galvanizing, cleaning, degreasing, plating, etc.)", items:[{num:1,text:"Acidic and Alkaline Residues"},{num:2,text:"Spent acid and alkali"},{num:3,text:"Spent bath/sludge containing sulphide, cyanide and toxic metals"},{num:4,text:"Sludge from Bath Containing Organic Solvents"},{num:5,text:"Phosphate Sludge"},{num:6,text:"Sludge from Staining Bath"},{num:7,text:"Copper etching residues"},{num:8,text:"Plating metal sludge"}]},
+    {no:13, title:"Production of iron and steel including other ferrous alloys", items:[{num:1,text:"Spent pickling liquor"},{num:2,text:"Sludge from acid recovery Unit"},{num:3,text:"Benzol Acid Sludge"},{num:4,text:"Decanter Tank Tar Sludge"},{num:5,text:"Tar Storage Tank Residue"},{num:6,text:"Residues from Coke Oven By-Product Plant"}]},
+    {no:14, title:"Hardening of steel", items:[{num:1,text:"Cyanide-, nitrate-, or nitrite-containing sludge"},{num:2,text:"Spent hardening salt"}]},
+    {no:16, title:"Production of caustic soda and chlorine", items:[{num:1,text:"Mercury bearing sludge from mercury cell process"},{num:2,text:"Residue/Sludges and filter Cakes"},{num:3,text:"Brine sludge containing mercury"}]},
+    {no:17, title:"Production of mineral acids", items:[{num:1,text:"Residues, dusts or filter cakes"},{num:2,text:"Spent catalyst"}]},
+    {no:18, title:"Production of nitrogenous and complex fertilizers", items:[{num:1,text:"Spent Catalyst"},{num:2,text:"Carbon Residue/Spent Carbon"},{num:3,text:"Sludge/residue containing Arsenic"},{num:4,text:"Chromium sludge from water cooling tower"}]},
+    {no:19, title:"Production of phenol", items:[{num:1,text:"Residue Or Sludge Containing Phenol"},{num:2,text:"Spent catalyst"}]},
+    {no:20, title:"Production and/or industrial use of solvents", items:[{num:1,text:"Contaminated Aromatic, Aliphatic or Naphthenic Solvents"},{num:2,text:"Spent Solvents"},{num:3,text:"Distillation Residues"},{num:4,text:"Process Sludge"}]},
+    {no:21, title:"Production and/or industrial use of paints, pigments, lacquers, varnishes and inks", items:[{num:1,text:"Process Wastes, Residues and Sludges"},{num:2,text:"Spent Solvent"}]},
+    {no:22, title:"Production of plastics", items:[{num:1,text:"Spent catalysts"},{num:2,text:"Process Residues"}]},
+    {no:23, title:"Production and/or industrial use of glues, organic cements, adhesives and resins", items:[{num:1,text:"Wastes or Residues (Not Made With Vegetable or Animal Materials)"},{num:2,text:"Spent Solvents"}]},
+    {no:24, title:"Production of canvas and textiles", items:[{num:1,text:"Chemical Residues"}]},
+    {no:25, title:"Industrial production and formulation of wood preservatives", items:[{num:1,text:"Chemical Residues"},{num:2,text:"Residues from Wood Alkali Bath"}]},
+    {no:26, title:"Production or industrial use of synthetic dyes, dye intermediates and pigments", items:[{num:1,text:"Process waste, sludge/residues containing acid or toxic metals, or organic compounds"},{num:2,text:"Dust from Air Filtration System"},{num:3,text:"Spent acid"},{num:4,text:"Spent Solvent"},{num:5,text:"Spent catalyst"}]},
+    {no:27, title:"Production of organic-silicone compound", items:[{num:1,text:"Process Residues"}]},
+    {no:28, title:"Production/formulation of drugs, pharmaceutical and health care products", items:[{num:1,text:"Process Residue and Wastes"},{num:2,text:"Spent Catalyst"},{num:3,text:"Spent carbon"},{num:4,text:"Off-Specification Products"},{num:5,text:"Date-Expired Products"},{num:6,text:"Spent Solvents"}]},
+    {no:29, title:"Production and formulation of pesticides including stock-piles", items:[{num:1,text:"Process Wastes or Residues"},{num:2,text:"Sludge Containing Residual Pesticides"},{num:3,text:"Date-Expired and Off-Specification Pesticides"},{num:4,text:"Spent Solvents"},{num:5,text:"Spent catalysts"},{num:6,text:"Spent acids"}]},
+    {no:30, title:"Leather tanneries", items:[{num:1,text:"Chromium bearing residue and sludge"}]},
+    {no:31, title:"Electronic Industry", items:[{num:1,text:"Process Residue And Wastes"},{num:2,text:"Spent Etching Chemicals and Solvents"}]},
+    {no:32, title:"Pulp and Paper Industry", items:[{num:1,text:"Spent Chemicals"},{num:2,text:"Corrosive Wastes from Use of Strong Acid and Bases"},{num:3,text:"Process Sludge Containing Absorbable Organic Halides (AOX)"}]},
+    {no:33, title:"Handling of hazardous chemicals and wastes", items:[{num:1,text:"Empty Barrels/Containers/Liners Contaminated with Hazardous Chemicals/Wastes"},{num:2,text:"Contaminated Cotton Rags or Other Cleaning Materials"}]},
+    {no:34, title:"De-contamination of barrels/containers used for hazardous wastes/chemicals", items:[{num:1,text:"Chemical-Containing Residue Arising From Decontamination"},{num:2,text:"Sludge from Treatment of Waste Water from Cleaning/Disposal of Barrels/Containers"}]},
+    {no:35, title:"Purification/treatment of exhaust air, gases, water, wastewater & CETPs", items:[{num:1,text:"Exhaust Air or Gas cleaning residue"},{num:2,text:"Spent ion exchange resin containing Toxic metals"},{num:3,text:"Chemical Sludge from Waste Water Treatment"},{num:4,text:"Oil and Grease Skimming"},{num:5,text:"Chromium sludge from cooling water"}]},
+    {no:36, title:"Purification process for organic compounds/solvents", items:[{num:1,text:"Any Process or Distillation Residue"},{num:2,text:"Spent Carbon or Filter Medium"}]},
+    {no:37, title:"Hazardous waste treatment processes (pre-processing, incineration, concentration)", items:[{num:1,text:"Sludge from Wet Scrubbers"},{num:2,text:"Ash from incinerator and flue gas cleaning residues"},{num:3,text:"Concentration or Evaporation Residues"}]},
+    {no:38, title:"Chemical processing of Ores containing heavy metals (Chromium, Manganese, Nickel, Cadmium etc.)", items:[{num:1,text:"Process Residues"},{num:2,text:"Spent Acid"}]}
+];
 
-  const wasteList = document.getElementById('wasteList');
-  function renderWasteList(filter=''){
-    const f = filter.toLowerCase();
-    const filtered = wasteData.filter(cat =>
-      !f || cat.title.toLowerCase().includes(f) || cat.items.some(i => i.toLowerCase().includes(f))
+function renderWasteList(filter=''){
+  const f = filter.toLowerCase();
+  const isNumberSearch = /^\d+\.\d+$/.test(f);
+
+  const filtered = wasteData
+    .map(cat => {
+      let items = cat.items;
+      if (isNumberSearch) {
+        items = cat.items.filter(i => `${cat.no}.${i.num}` === f);
+      } else if (f) {
+        items = cat.items.filter(i => i.text.toLowerCase().includes(f));
+      }
+      return {...cat, items};
+    })
+    .filter(cat =>
+      !f ||
+      cat.title.toLowerCase().includes(f) ||
+      cat.items.length > 0
     );
-    wasteList.innerHTML = filtered.map(cat => `
-      <div class="waste-cat">
-        <div class="waste-cat-head">
-          <span class="waste-cat-num">${cat.no}.</span>
-          <span class="waste-cat-title">${cat.title}</span>
-        </div>
-        <ul class="waste-sub-list">
-          ${cat.items.map((item, idx) => `<li><b>${cat.no}.${idx+1}</b>${item}</li>`).join('')}
-        </ul>
+
+  wasteList.innerHTML = filtered.map(cat => `
+    <div class="waste-cat">
+      <div class="waste-cat-head">
+        <span class="waste-cat-num">${cat.no}.</span>
+        <span class="waste-cat-title">${cat.title}</span>
       </div>
-    `).join('');
-  }
-  renderWasteList();
-  document.getElementById('wasteSearch').addEventListener('input', (e) => renderWasteList(e.target.value));
+      <ul class="waste-sub-list">
+        ${cat.items.map((item) => `<li><b>${cat.no}.${item.num}</b>${item.text}</li>`).join('')}
+      </ul>
+    </div>
+  `).join('');
+}
+renderWasteList();
+document.getElementById('wasteSearch').addEventListener('input', (e) => renderWasteList(e.target.value));
 </script>
 
 </body>
