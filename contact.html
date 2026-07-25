@@ -191,6 +191,73 @@ color:#8A1D22;
 
 }
 
+/* ---------- HIRING BANNER ---------- */
+.hiring-banner{
+  position:relative;
+  display:flex;
+  justify-content:flex-end;
+  padding-right:8%;
+  margin-bottom:-72px;
+  z-index:2;
+}
+.hiring-inner{
+  position:relative;
+  display:inline-block;
+}
+.hiring-img{
+  width:100%;
+  max-width:300px;
+  height:auto;
+}
+.thought-bubble{
+  position:absolute;
+  top:-45px;
+  left:50%;
+  transform:translateX(-50%) scale(0.6) translateY(10px);
+  background:#fff;
+  border:1.5px solid #D9C7AF;
+  border-radius:18px;
+  padding:8px 16px;
+  box-shadow:0 12px 30px rgba(138,29,34,0.12);
+  opacity:0;
+  animation:bubblePop 0.6s ease forwards 0.6s, bubbleFloat 3s ease-in-out infinite 1.4s;
+}
+.thought-bubble::before{
+  content:"";
+  position:absolute;
+  bottom:-10px;
+  left:50%;
+  transform:translateX(-50%) rotate(45deg);
+  width:12px;height:12px;
+  background:#fff;
+  border-right:1.5px solid #D9C7AF;
+  border-bottom:1.5px solid #D9C7AF;
+  border-radius:0 0 3px 0;
+}
+.thought-bubble span{
+  font-family:'Fraunces',serif;
+  font-size:12.5px;
+  font-weight:600;
+  color:#8A1D22;
+  white-space:nowrap;
+}
+@keyframes bubblePop{
+  0%{opacity:0;transform:translateX(-50%) scale(0.6) translateY(10px);}
+  70%{opacity:1;transform:translateX(-50%) scale(1.06) translateY(-2px);}
+  100%{opacity:1;transform:translateX(-50%) scale(1) translateY(0);}
+}
+@keyframes bubbleFloat{
+  0%,100%{transform:translateX(-50%) translateY(0);}
+  50%{transform:translateX(-50%) translateY(-6px);}
+}
+
+@media(max-width:700px){
+  .hiring-img{max-width:220px;}
+  .hiring-banner{padding-right:4%;}
+  .thought-bubble{padding:6px 12px;}
+  .thought-bubble span{font-size:11px;}
+}
+
 .contact-card{
 
 background:white;
@@ -715,6 +782,16 @@ industrial lubricants or any business enquiry.
 </p>
 
 </div>
+
+<div class="hiring-banner">
+  <div class="hiring-inner">
+    <img src="hiring-characters.png" alt="We're always hiring" class="hiring-img">
+    <div class="thought-bubble">
+      <span>We're Always Hiring!</span>
+    </div>
+  </div>
+</div>
+
 <div class="contact-card">
 
     <!-- LEFT TREE -->
@@ -776,7 +853,7 @@ industrial lubricants or any business enquiry.
 
         <h4>OUR OFFICE</h4>
 
-        <h2>Office Address</h2>
+        <h2>Address</h2>
 
         <p>
 
@@ -784,9 +861,9 @@ industrial lubricants or any business enquiry.
 
             Ashiana Garden Shopping Complex<br>
 
-            Bhiwadi – 301019<br>
+            Alwar by-pass road, Bhiwadi – 301019<br>
 
-            Rajasthan, India
+            Rajasthan, INDIA
 
         </p>
 
