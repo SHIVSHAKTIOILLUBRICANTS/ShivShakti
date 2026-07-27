@@ -142,17 +142,16 @@ margin-bottom:18px;
 }
 
 .contact-heading p{
+    max-width:760px;
+    margin:0 auto;
+    text-align:center;
+    font-size:20px;
+    line-height:1.8;
+    color:#6D625C;
 
-font-size:17px;
-
-color:#6D625C;
-
-max-width:620px;
-
-margin:auto;
-
-line-height:1.8;
-
+    position:relative;
+    left:-170px;
+    top:50px;      /* 👈 Is value ko increase/decrease karke adjust kar */
 }
 
 .heading-divider{
@@ -193,12 +192,15 @@ color:#8A1D22;
 
 /* ---------- HIRING BANNER ---------- */
 .hiring-banner{
-  position:relative;
-  display:flex;
-  justify-content:flex-end;
-  padding-right:8%;
-  margin-bottom:0px;
-  z-index:2;
+    display:flex;
+    justify-content:flex-end;
+    align-items:flex-end;
+
+    margin-top:-115px;
+    margin-bottom:0;
+
+    transform:translateX(-30px);  /* 👈 left move */
+    z-index:2;
 }
 .hiring-inner{
   position:relative;
