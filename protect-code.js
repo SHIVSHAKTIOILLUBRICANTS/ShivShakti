@@ -65,9 +65,16 @@
     "50%{transform:translateY(-14px) rotate(2deg);}}";
 
   document.head.appendChild(style);
-  document.addEventListener("DOMContentLoaded", function () {
+  // Script is placed near the end of <body>, so the DOM is already
+  // parsed by the time this runs — append directly instead of
+  // waiting for an event that has likely already fired.
+  if (document.body) {
     document.body.appendChild(overlay);
-  });
+  } else {
+    document.addEventListener("DOMContentLoaded", function () {
+      document.body.appendChild(overlay);
+    });
+  }
 
   // 4. DevTools-open detector — shows the guard overlay instead of
   //    fully destroying the page (so nothing breaks if it's a false
