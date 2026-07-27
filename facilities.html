@@ -109,7 +109,7 @@ nav ul li a:hover{color:var(--red);}
   margin-left:-50vw;
   margin-top:-80px;
   margin-bottom:0;
-  padding:110px 20px 140px;   /* stats ke liye extra space */
+  padding:110px 20px 260px;   /* stats ke liye extra space */
   overflow:visible;
   text-align:center;
 
@@ -145,7 +145,7 @@ nav ul li a:hover{color:var(--red);}
   gap:20px;
 
   width:fit-content;     /* sirf jitni space chahiye utni hi lega */
-  margin:-110px auto 0;  /* auto se poora group center ho jayega */
+  margin:-180px auto 0;  /* auto se poora group center ho jayega */
 
   position:relative;
   z-index:5;
@@ -186,7 +186,7 @@ background-size:
     350px auto;
 
   padding:70px 20px 80px;
-  margin-top:-20px;
+  margin-top:0px;
   margin-bottom:-80px;
 }
 .after-stats > *{
@@ -228,7 +228,43 @@ background-size:
 .facility-img{
   width:280px;height:auto;object-fit:cover;flex-shrink:0;
 }
-.facility-card-body{padding:36px 34px;}
+.facility-slider{
+    position:relative;
+    width:280px;
+    height:260px;
+    overflow:hidden;
+    flex-shrink:0;
+}
+
+.slides{
+
+    display:flex;
+
+    width:100%;
+    height:100%;
+
+    transition:transform .7s ease;
+
+}
+
+.slide{
+
+    min-width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    user-select:none;
+
+    position:absolute;
+    width:100%;
+
+}
+.facility-card-body{
+    flex:1;
+    padding:36px 34px;
+}
 .facility-card::before{
   content:"";position:absolute;top:0;left:0;right:0;height:4px;
   background:linear-gradient(90deg,var(--red),var(--gold));
@@ -319,6 +355,7 @@ footer ul li{margin-bottom:10px;color:#A79E98;}
 @media(max-width:700px){
   .facility-card{flex-direction:column;}
   .facility-img{width:100%;height:200px;}
+  .facility-slider{width:100%;height:200px;}
 }
 /*==========================
     FLOATING PETALS
@@ -418,6 +455,96 @@ opacity:0;
 
 }
 
+/* ===== Slider Arrows ===== */
+
+.slider-btn{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+
+    width:38px;
+    height:38px;
+
+    border:none;
+    border-radius:50%;
+
+    background:rgba(255,255,255,.9);
+    color:#8A1D22;
+
+    font-size:18px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    transition:.3s;
+
+    opacity:0;
+
+    z-index:10;
+}
+
+.facility-slider:hover .slider-btn{
+    opacity:1;
+}
+
+.prev{
+    left:12px;
+}
+
+.next{
+    right:12px;
+}
+
+.slider-btn:hover{
+    background:#fff;
+    transform:translateY(-50%) scale(1.08);
+}
+/* ===== Slider Dots ===== */
+
+.slider-dots{
+
+    position:absolute;
+
+    bottom:14px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    gap:8px;
+
+    z-index:10;
+
+}
+
+.dot{
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.5);
+
+    transition:.3s;
+
+}
+
+.dot.active{
+
+    width:22px;
+
+    border-radius:20px;
+
+    background:#fff;
+
+}
 </style>
 </head>
 
@@ -479,23 +606,40 @@ opacity:0;
 
     <div class="facility-grid">
       <div class="facility-card">
-        <img src="afr-unit.jpg.jpeg" alt="AFR Unit" class="facility-img">
+        <div class="facility-slider">
+
+    <div class="slides">
+
+        <img src="afr1.jpeg" class="slide">
+        <img src="afr2.png" class="slide">
+
+    </div>
+
+</div>
         <div class="facility-card-body">
           <h3>AFR Unit</h3>
           <span class="facility-sub">Pre-Processing Facility</span>
           <p>Preparing hazardous and industrial wastes for cement-kiln co-processing, converting them into alternative fuel and raw material.</p>
         </div>
       </div>
+
       <div class="facility-card">
-        <img src="tsdf-unit.jpg.jpeg" alt="TSDF Unit" class="facility-img">
+        <div class="facility-slider">
+          <img src="tsdf1.jpeg" class="slide active">
+          <img src="tsdf2.jpeg" class="slide">
+        </div>
         <div class="facility-card-body">
           <h3>TSDF Unit</h3>
           <span class="facility-sub">Common Incinerator Facility</span>
           <p>Authorized Treatment, Storage & Disposal Facility with heat recovery systems, ensuring safe and energy-efficient waste destruction.</p>
         </div>
       </div>
+
       <div class="facility-card">
-        <img src="oil-recycling-unit.jpg" alt="Oil Recycling Unit" class="facility-img">
+        <div class="facility-slider">
+          <img src="oil-recycling-unit.jpg" class="slide active">
+          <img src="oil-recycling-unit2.jpg" class="slide">
+        </div>
         <div class="facility-card-body">
           <h3>Oil Recycling Unit</h3>
           <span class="facility-sub">Used/Waste Oil Re-refinery Plant</span>
@@ -623,7 +767,65 @@ petals.appendChild(img);
     el.addEventListener('mouseenter', () => cursorRing.classList.add('hovering'));
     el.addEventListener('mouseleave', () => cursorRing.classList.remove('hovering'));
   });
+  const rainAudio = document.getElementById("rainAudio");
+
+rainAudio.volume = 0.18;
+
+function startRain() {
+    rainAudio.play().catch(() => {});
+    document.removeEventListener("click", startRain);
+    document.removeEventListener("mousemove", startRain);
+    document.removeEventListener("scroll", startRain);
+}
+
+document.addEventListener("click", startRain);
+document.addEventListener("mousemove", startRain);
+document.addEventListener("scroll", startRain);
+
+// Auto-sliding facility card photos
+document.querySelectorAll(".facility-slider").forEach((slider)=>{
+
+    const slides = slider.querySelectorAll(".slide");
+
+    let current = 0;
+
+    if(slides.length < 2) return;
+
+    // Initial CSS
+    slides.forEach((slide,i)=>{
+        slide.style.position="absolute";
+        slide.style.top="0";
+        slide.style.left=(i===0?"0":"100%");
+        slide.style.width="100%";
+        slide.style.height="100%";
+        slide.style.transition="transform .8s ease";
+    });
+
+    setInterval(()=>{
+
+        const next=(current+1)%slides.length;
+
+        slides[current].style.transform="translateX(-100%)";
+        slides[next].style.transform="translateX(-100%)";
+
+        setTimeout(()=>{
+
+            slides[current].style.left="100%";
+            slides[current].style.transform="translateX(0)";
+
+            current=next;
+
+        },800);
+
+    },3000);
+
+});
+
 </script>
+
+<audio id="rainAudio" loop preload="auto">
+    <source src="rain.mp3" type="audio/mpeg">
+</audio>
 
 </body>
 </html>
