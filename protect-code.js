@@ -27,8 +27,8 @@
 
 (function () {
   var GUARD_IMAGE = "guard-character.png"; // update path if needed
-  var GUARD_MESSAGE = "Ruko zara, thoda sabar karo!";
-  var GUARD_SUBTEXT = "Yeh page abhi dekhne ke liye nahi hai.";
+  var GUARD_MESSAGE = "इतनी फुर्सत है तो नौकरी ढूंढ ले 😏💼, ";
+  var GUARD_SUBTEXT = "कोड मत देख👀💻";
 
   // 1. Build guard overlay (hidden until triggered)
   var overlay = document.createElement("div");
