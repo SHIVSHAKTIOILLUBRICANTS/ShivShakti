@@ -623,21 +623,7 @@ document.addEventListener("DOMContentLoaded", () => {
       el.addEventListener("mouseleave", () => cursorRing.classList.remove("hovering"));
     });
   }
-
-  if (rainAudio) {
-    rainAudio.volume = 0.18;
-
-    const startRain = () => {
-      rainAudio.play().catch(() => {});
-      document.removeEventListener("click", startRain);
-      document.removeEventListener("mousemove", startRain);
-      document.removeEventListener("scroll", startRain);
-    };
-
-    document.addEventListener("click", startRain);
-    document.addEventListener("mousemove", startRain);
-    document.addEventListener("scroll", startRain);
-  }
+  
 
   const petals = document.querySelector(".petals");
   if (petals) {
@@ -676,9 +662,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
-<audio id="rainAudio" loop preload="auto">
-    <source src="rain.mp3" type="audio/mpeg">
-</audio>
 <script src="protect-code.js"></script>
 </body>
 </html>

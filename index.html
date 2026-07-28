@@ -945,8 +945,7 @@ z-index:999999;" class="btn-primary">Let's Connect</a>
 </script>
 <script src="protect-code.js"></script>
 <script>
-  // Prefetch other pages in the background after index has fully
-  // loaded, so navigating to them later feels instant.
+
   window.addEventListener("load", function () {
     var pagesToPreload = [
       "about.html",
@@ -955,13 +954,12 @@ z-index:999999;" class="btn-primary">Let's Connect</a>
       "contact.html"
     ];
     pagesToPreload.forEach(function (page) {
-      // <link rel="prefetch"> — works in Chrome/Edge/Firefox
+
       var link = document.createElement("link");
       link.rel = "prefetch";
       link.href = page;
       document.head.appendChild(link);
-      // fetch() fallback — warms the HTTP cache in browsers
-      // (like Safari) that don't fully support rel=prefetch
+      
       fetch(page, { mode: "same-origin" }).catch(function () {});
     });
   });
