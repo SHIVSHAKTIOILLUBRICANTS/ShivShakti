@@ -94,25 +94,34 @@
 
   // 4. Fallback: detect DevTools opened via the right-click
   //    "Inspect" menu item (or any other way) using a window-size
-  //    check. Requires the gap to persist for 3 checks in a row
-  //    (900ms apart) before triggering, to avoid false positives
-  //    from normal window resizing/maximizing.
-  var threshold = 180;
-  var consecutiveHits = 0;
-  var REQUIRED_HITS = 1; // faster trigger, per request (option 1)
+  //    check. SKIPPED ENTIRELY on mobile/touch devices — phone
+  //    browsers change innerHeight/outerHeight constantly due to
+  //    the address bar showing/hiding, which was falsely triggering
+  //    the guard on every page load. Mobile browsers don't expose
+  //    DevTools through normal UI anyway, so this check isn't
+  //    needed there.
+  var isMobile =
+    /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) ||
+    (navigator.maxTouchPoints && navigator.maxTouchPoints > 1 && window.innerWidth < 900);
 
-  setInterval(function () {
-    var widthGap = window.outerWidth - window.innerWidth > threshold;
-    var heightGap = window.outerHeight - window.innerHeight > threshold;
+  if (!isMobile) {
+    var threshold = 180;
+    var consecutiveHits = 0;
+    var REQUIRED_HITS = 1; // faster trigger, per request (option 1)
 
-    if (widthGap || heightGap) {
-      consecutiveHits++;
-      if (consecutiveHits >= REQUIRED_HITS) {
-        showGuard();
+    setInterval(function () {
+      var widthGap = window.outerWidth - window.innerWidth > threshold;
+      var heightGap = window.outerHeight - window.innerHeight > threshold;
+
+      if (widthGap || heightGap) {
+        consecutiveHits++;
+        if (consecutiveHits >= REQUIRED_HITS) {
+          showGuard();
+        }
+      } else {
+        consecutiveHits = 0;
+        hideGuard();
       }
-    } else {
-      consecutiveHits = 0;
-      hideGuard();
-    }
-  }, 400);
+    }, 400);
+  }
 })();
