@@ -27,17 +27,33 @@
 
 (function () {
   var GUARD_IMAGE = "guard-character.png"; // update path if needed
-  var GUARD_MESSAGE = "इतनी फुर्सत है तो नौकरी ढूंढ ले 😏💼, ";
-  var GUARD_SUBTEXT = "कोड मत देख👀💻";
+  var GUARD_LINE_1 = "इतनी फुर्सत है तो नौकरी ढूंढ ले 😏💼, कोड मत देख 🤨🧑‍💻";
+  var GUARD_LINE_2 = "One more click and I'm calling your mom. Close this tab, human. 📞🚪";
 
   // 1. Build guard overlay (hidden until triggered)
+  function makeWaveSpans(text) {
+    var out = "";
+    for (var i = 0; i < text.length; i++) {
+      var ch = text[i];
+      out +=
+        '<span class="wave-char" style="animation-delay:' +
+        (i * 0.04) +
+        's">' +
+        (ch === " " ? "&nbsp;" : ch) +
+        "</span>";
+    }
+    return out;
+  }
+
   var overlay = document.createElement("div");
   overlay.id = "guard-overlay";
   overlay.innerHTML =
     '<div class="guard-box">' +
     '<img src="' + GUARD_IMAGE + '" alt="" class="guard-char" />' +
-    '<p class="guard-msg">' + GUARD_MESSAGE + "</p>" +
-    '<p class="guard-sub">' + GUARD_SUBTEXT + "</p>" +
+    '<div class="guard-line-wrap">' +
+    '<p class="guard-line guard-line-1">' + makeWaveSpans(GUARD_LINE_1) + "</p>" +
+    '<p class="guard-line guard-line-2">' + makeWaveSpans(GUARD_LINE_2) + "</p>" +
+    "</div>" +
     "</div>";
 
   var style = document.createElement("style");
@@ -45,15 +61,19 @@
     "#guard-overlay{position:fixed;inset:0;z-index:2147483647;display:none;" +
     "align-items:center;justify-content:center;flex-direction:column;" +
     "background:#F7F2EA;text-align:center;padding:20px;}" +
-    "#guard-overlay .guard-box{display:flex;flex-direction:column;align-items:center;}" +
+    "#guard-overlay .guard-box{display:flex;flex-direction:column;align-items:center;max-width:600px;}" +
     "#guard-overlay .guard-char{width:220px;max-width:60vw;" +
     "animation:guard-bob 1.8s ease-in-out infinite;}" +
-    "#guard-overlay .guard-msg{font-family:'Fraunces',serif;color:#8A1D22;" +
-    "font-size:1.6rem;margin:18px 0 6px;}" +
-    "#guard-overlay .guard-sub{font-family:'Manrope',sans-serif;color:#3a3a3a;" +
-    "font-size:1rem;opacity:.8;}" +
+    "#guard-overlay .guard-line-wrap{position:relative;min-height:3.2em;width:100%;margin-top:18px;}" +
+    "#guard-overlay .guard-line{position:absolute;left:0;right:0;margin:0;" +
+    "font-family:'Manrope',sans-serif;font-weight:500;font-size:1.15rem;color:#8A1D22;}" +
+    "#guard-overlay .guard-line-1{animation:guard-line-fade 7s infinite;}" +
+    "#guard-overlay .guard-line-2{animation:guard-line-fade 7s infinite;animation-delay:3.5s;}" +
+    "#guard-overlay .wave-char{display:inline-block;animation:guard-char-wave 1.2s ease-in-out infinite;}" +
     "@keyframes guard-bob{0%,100%{transform:translateY(0) rotate(-2deg);}" +
-    "50%{transform:translateY(-14px) rotate(2deg);}}";
+    "50%{transform:translateY(-14px) rotate(2deg);}}" +
+    "@keyframes guard-char-wave{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}" +
+    "@keyframes guard-line-fade{0%,45%{opacity:1;}50%,95%{opacity:0;}100%{opacity:1;}}";
 
   document.head.appendChild(style);
   if (document.body) {
