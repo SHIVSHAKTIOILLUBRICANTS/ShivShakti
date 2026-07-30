@@ -367,43 +367,56 @@ nav ul li a:hover{color:var(--red);}
   font-family:'Fraunces',serif;font-size:38px;font-weight:600;color:var(--text);
 }
 
-.founders-grid{
-  background:transparent;
-    color:var(--ink);
-    font-family:'Manrope',sans-serif;
-    line-height:1.6;
-  display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-bottom:110px;
+/* ---------- FOUNDER CARDS (image + dark info bar) ---------- */
+.founders-wrapper{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-bottom:90px;
 }
 .founder-card{
-  background:white;border-radius:24px;padding:44px 30px;text-align:center;
-  border:1px solid var(--border);box-shadow:var(--shadow);transition:.4s ease;
+  background:#e5d1b8;border-radius:20px;overflow:hidden;
+  border:1px solid var(--border);box-shadow:var(--shadow);
+  transition:.4s ease;display:flex;flex-direction:column;
+  padding:0;text-align:left;
 }
 .founder-card:hover{
-  transform:translateY(-10px);
+  transform:translateY(-8px);
   box-shadow:0 30px 70px rgba(0,0,0,.10),0 40px 90px rgba(138,29,34,.12);
 }
-.founder-avatar{
-  width:180px;height:180px;border-radius:50%;margin:0 auto 20px;
-  background:linear-gradient(135deg,#F8F3ED,#EFE0CB);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Fraunces',serif;font-size:40px;font-weight:600;color:var(--maroon);
-  border:4px solid #EAD9BC;
+.founder-card__image{
+  position:relative;width:100%;aspect-ratio:4/5;
+  background:linear-gradient(135deg,#EFE6D8,#E5D8C8);
   overflow:hidden;
 }
-.founder-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+.founder-card__image img{
+  width:100%;height:100%;object-fit:cover;object-position:top;display:block;
 }
-.founder-card h3{
-  font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:var(--text);margin-bottom:6px;
+.founder-card-content{
+  background:linear-gradient(160deg, var(--maroon), var(--red-deep));
+  padding:28px 24px 24px;
+  margin-top:-28px;
+  border-radius:24px 24px 0 0;
+  position:relative;
+  z-index:2;
+  box-shadow:0 -12px 24px rgba(0,0,0,.12);
 }
-.founder-role{
-  font-size:12.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
-  color:var(--red);margin-bottom:16px;display:block;
+.founder-card-content h3{
+  font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:#fff;margin:0 0 4px;
 }
-.founder-card p{font-size:14.5px;color:var(--light);line-height:1.8;}
+.founder-card-content .founder-role{
+  font-size:13.5px;color:var(--gold);margin:0 0 4px;
+  letter-spacing:.02em;
+}
+.founder-card-social a{
+  width:34px;height:34px;border-radius:8px;
+  background:rgba(255,255,255,.08);
+  display:inline-flex;align-items:center;justify-content:center;
+  color:#fff;transition:.3s ease;
+}
+.founder-card-social a:hover{
+  background:var(--gold);color:var(--ink);
+}
+@media (max-width:900px){
+  .founders-wrapper{grid-template-columns:1fr;}
+}
 
 /* ---------- COMPANY STORY ---------- */
 .story-card{
@@ -704,31 +717,50 @@ C850,20 1040,170 1200,85"/>
     <h2>Meet Our Founders</h2>
   </div>
 
-  <div class="founders-grid">
-    <div class="founder-card">
-      <div class="founder-avatar">
-    <img src="sunny-sir.png" alt="Founder">
-</div>
-      <h3>[Founder Name]</h3>
-      <span class="founder-role">Founder & Director</span>
-      <p>Leading SSOL's vision since its inception, with a focus on sustainable growth and industry compliance.</p>
-    </div>
-    <div class="founder-card">
-      <div class="founder-avatar">
-    <img src="sandeep-sir.png" alt="Co-Founder">
-</div>
-      <h3>[Founder Name]</h3>
-      <span class="founder-role">Co-Founder & Director</span>
-      <p>Overseeing operations and facility management, ensuring every process meets the highest safety standards.</p>
-    </div>
-    <div class="founder-card">
-      <div class="founder-avatar">
-    <img src="dada-g.png" alt="Director">
-</div>
-      <h3>[Founder Name]</h3>
-      <span class="founder-role">Director, Business Development</span>
-      <p>Driving SSOL's expansion across India, building long-term partnerships with industrial clients.</p>
-    </div>
+  <div class="founders-wrapper">
+
+            <!-- Founder 1 -->
+            <div class="founder-card">
+                <div class="founder-card__image">
+                    <img
+                        src="sunny-sir.png"
+                        alt="Sunny Dhir"
+                    >
+                </div>
+                <div class="founder-card-content">
+                    <h3>Mr. Sunny Dhir</h3>
+                    <p class="founder-role">Co-founder and CEO</p>
+                </div>
+            </div>
+
+            <!-- Founder 2 -->
+            <div class="founder-card">
+                <div class="founder-card__image">
+                    <img
+                        src="dada-g.png"
+                        alt="Dada G"
+                    >
+                </div>
+                <div class="founder-card-content">
+                    <h3>Shri Bikram Dhir</h3>
+                    <p class="founder-role">Founder</p>
+                </div>
+            </div>
+
+            <!-- Founder 3 -->
+            <div class="founder-card">
+                <div class="founder-card__image">
+                    <img
+                        src="sandeep-sir.png"
+                        alt="Sandeep Dhir"
+                    >
+                </div>
+                <div class="founder-card-content">
+                    <h3>Mr. Sandeep Dhir</h3>
+                    <p class="founder-role">Co-founder and CEO</p>
+                </div>
+            </div>
+
   </div>
 
   <div class="section-tag-wrap">
