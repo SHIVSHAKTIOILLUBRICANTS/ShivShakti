@@ -109,14 +109,29 @@ nav ul li a:hover{color:var(--red);}
 }
 .nav-cta:hover{background:var(--maroon);}
 
-.contact-wrapper{
-background:#FDEDD6;
+.contact-bg{
+width:100vw;
+position:relative;
+left:50%;
+transform:translateX(-50%);
+background-image:url('contact-bg.png');
+background-size:cover;
+background-position:center top;
+background-repeat:no-repeat;
+padding-top:80px;
+padding-bottom:20px;
+}
+
+.contact-bg-inner{
 max-width:1200px;
+margin:0 auto;
+padding:0 20px;
+}
 
+.contact-wrapper{
+max-width:1200px;
 margin:auto;
-
-padding:80px 20px;
-
+padding:0 20px 80px;
 }
 
 .contact-heading{
@@ -160,34 +175,35 @@ width:120px;
 
 height:2px;
 
-background:#D9C7AF;
-
 margin:30px auto;
 
 position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+}
 
+.heading-divider::before,
+.heading-divider::after{
+content:"";
+flex:1;
+height:2px;
+background:#D9C7AF;
+}
+
+.heading-divider::before{
+margin-right:14px;
 }
 
 .heading-divider::after{
+margin-left:14px;
+}
 
-content:"◆";
-
-position:absolute;
-
-left:50%;
-
-top:-13px;
-
-transform:translateX(-50%);
-
-background:#FDEDD6;
-
-padding:0 12px;
-
+.divider-diamond{
 font-size:18px;
 
 color:#8A1D22;
-
+line-height:1;
 }
 
 /* ---------- HIRING BANNER ---------- */
@@ -772,17 +788,18 @@ padding:24px;
 
 <div class="contact-wrapper">
 
+<div class="contact-bg">
+<div class="contact-bg-inner">
+
 <div class="contact-heading">
-
 <h1>Let's Connect</h1>
-
-<div class="heading-divider"></div>
-
+<div class="heading-divider">
+  <span class="divider-diamond">◆</span>
+</div>
 <p>
 We'd love to hear from you. Reach out to us for waste management solutions,
 industrial lubricants or any business enquiry.
 </p>
-
 </div>
 
 <div class="hiring-banner">
@@ -793,6 +810,10 @@ industrial lubricants or any business enquiry.
     </div>
   </div>
 </div>
+
+</div>
+</div>
+
 
 <div class="contact-card">
 
@@ -890,6 +911,7 @@ industrial lubricants or any business enquiry.
 </div>
 
 </div>
+</div>
 
 <footer>
   <div class="footer-inner">
@@ -910,11 +932,12 @@ industrial lubricants or any business enquiry.
       <ul>
         <li><a href="index.html#overview">Overview</a></li>
         <li><a href="index.html#products">Products</a></li>
+        <li><a href="index.html#certifications">Certifications</a></li>
         <li><a href="facilities.html">Facilities</a></li>
         <li><a href="waste-handled.html">Waste Handled</a></li>
-        <li><a href="index.html#certifications">Certifications</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        
         <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
         <li><a href="contact.html#Careers">Careers</a></li>
       </ul>
     </div>
