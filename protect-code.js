@@ -172,7 +172,7 @@
   // time. Switching is done in one place (applyActiveLine) so the
   // fade and the letter-wave animation can never drift apart like
   // the old independent-@keyframes version did.
-  var LINE_DISPLAY_MS = 3200; // how long each line stays fully visible
+  var LINE_DISPLAY_MS = 6000; // how long each line stays fully visible
   var lineEls = null;
   var activeLineIndex = 0;
   var lineCycleTimer = null;
