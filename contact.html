@@ -798,6 +798,57 @@ padding:24px;
 
 }
 
+/* ===== FINAL MOBILE FIXES — sabse last mein rakho ===== */
+@media(max-width:700px){
+
+  .contact-heading p{
+    position:static;
+    left:0;
+    top:0;
+  }
+
+  .hiring-banner{
+    margin-top:20px;
+  }
+
+  .contact-card{
+    padding:30px 15px;
+  }
+
+  .tree img{
+    max-width:160px;
+    margin:0 auto;
+  }
+
+  .contact-details{
+    align-items:flex-start;
+    padding-left:0;
+    width:100%;
+  }
+
+  .contact-item{
+    justify-content:flex-start;
+    width:100%;
+    text-align:left;
+  }
+
+  /* phone numbers: grid ki jagah stacked column, jaise desktop pe hain bas ek ke niche ek */
+  .contact-item.phones span{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .contact-item.phones span a{
+    white-space:nowrap;
+    font-size:15px;
+  }
+
+  /* email: ek-ek line mein poora fit */
+  .contact-item span a{
+    white-space:nowrap;
+    font-size:13.5px;
+  }
+}
 </style>
 </head>
 
