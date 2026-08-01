@@ -275,27 +275,43 @@ color:#8A1D22;
     top:0;
   }
 
-  /* 👇 NAYA ADD KARO */
   .contact-card{
-    padding:30px 20px;
+    padding:30px 15px;
     text-align:center;
   }
+
   .tree img{
-    max-width:230px;
+    max-width:180px;
     margin:0 auto;
   }
+
+  .contact-details{
+    padding-left:0;
+    align-items:center;
+    width:100%;
+  }
+
   .contact-item{
     justify-content:center;
-    text-align:left;
+    width:100%;
   }
+
+  /* phone numbers - ek column, ek line mein har number */
+  .contact-item.phones span{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .contact-item.phones span a{
+    white-space:nowrap;
+    font-size:17px;
+  }
+
+  /* email - single line mein */
   .contact-item span,
   .contact-item a{
-    word-break:break-word;
-    overflow-wrap:break-word;
-    max-width:100%;
-  }
-  .contact-item.phones span{
-    grid-template-columns:1fr;
+    white-space:nowrap;
+    font-size:14px;
   }
 }
 
