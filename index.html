@@ -237,12 +237,16 @@
   .marquee{background:var(--ink);color:#fff;padding:16px 0;overflow:hidden;}
   .marquee-track{
     display:flex;gap:56px;white-space:nowrap;
+    width:max-content;      /* 👈 YE LINE ADD KARO */
     font-family:'Fraunces',serif;font-size:16px;font-weight:600;
-    animation:scroll 890s linear infinite;
-  }
+    animation:scroll 24s linear infinite;
+}
   .marquee-track span{color:#D8CFC8;}
   .marquee-track span.hl{color:var(--red-glow);}
-  @keyframes scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+  @keyframes scroll{
+  0%{transform:translateX(0);}
+  100%{transform:translateX(calc(-50% - 28px));}   /* 56px gap ka aadha */
+}
 
   /* ---------- SECTION SHARED ---------- */
   section{padding:110px 24px;}
@@ -326,7 +330,7 @@
   .icon-strip .section-head{max-width:1280px;margin:0 auto 40px;padding:0 24px;}
   .icon-track{
     display:flex;gap:60px;width:max-content;
-    animation:iconScroll 900s linear infinite;
+    animation:iconScroll 30s linear infinite;
   }
   .icon-item{
     display:flex;flex-direction:column;align-items:center;
@@ -340,9 +344,9 @@
     line-height:1.4;
   }
   @keyframes iconScroll{
-    0%{transform:translateX(0);}
-    100%{transform:translateX(-50%);}
-  }
+  0%{transform:translateX(0);}
+  100%{transform:translateX(calc(-50% - 30px));}   /* 60px gap ka aadha */
+}
 
   /* ---------- FACILITIES ---------- */
   .facilities{background:var(--cream-deep);
