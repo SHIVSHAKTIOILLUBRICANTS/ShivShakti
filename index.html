@@ -161,11 +161,25 @@
     display:flex;align-items:center;justify-content:space-between;
     padding:16px 24px;
   }
-  .brand{display:flex;align-items:center;}
-  .brand img{
-    height:46px;width:auto;
-    filter:drop-shadow(0 2px 10px rgba(210, 194, 159, 0.45)) drop-shadow(0 0 18px rgba(210, 194, 159, 0.45));
-  }
+  .brand{display:flex;align-items:center;position:relative;}
+.brand img{
+  height:46px;width:auto;
+  transition:opacity .35s ease;
+}
+.brand .logo-red{
+  position:absolute;top:0;left:0;
+  opacity:0;
+}
+.brand .logo-white{
+  opacity:1;
+  filter:drop-shadow(0 2px 10px rgba(210,194,159,0.45)) drop-shadow(0 0 18px rgba(210,194,159,0.45));
+}
+header.scrolled .brand .logo-white{
+  opacity:0;
+}
+header.scrolled .brand .logo-red{
+  opacity:1;
+}
   nav ul{display:flex;gap:26px;list-style:none;flex-wrap:wrap;}
   nav ul li a{
     font-size:13px;font-weight:600;letter-spacing:0.04em;
@@ -553,7 +567,10 @@
 
 <header id="siteHeader">
   <nav>
-    <a href="#" class="brand"><img src="logo.png.png" alt="SSOL Logo"></a>
+    <a href="#" class="brand">
+  <img src="logo-white.png" alt="SSOL Logo" class="logo-white">
+  <img src="logo-red.png" alt="SSOL Logo" class="logo-red">
+</a>
     <ul>
       <li><a href="#overview">Overview</a></li>
       <li><a href="#products">Products</a></li>
@@ -855,7 +872,7 @@ z-index:999999;" class="btn-primary">Let's Connect</a>
 <footer>
   <div class="footer-inner">
     <div>
-      <img src="logo.png.png" alt="SSOL Logo" style="height:42px;width:auto;margin-bottom:16px;filter:brightness(1.15);">
+      <img src="logo-red.png" alt="SSOL Logo" style="height:42px;width:auto;margin-bottom:16px;filter:brightness(1.15);">
       <p>Shiv Shakti Oil & Lubricants — premium quality lubricants for automotive and industrial use, based in Bhiwadi, Rajasthan.</p>
       <div class="footer-social">
         <a href="https://www.linkedin.com/company/shiv-shakti-oil-lubricants/" target="_blank" aria-label="LinkedIn">
